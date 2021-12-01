@@ -81,4 +81,155 @@
         </div>
     </div>
 </footer>
+<!--Back to top-->
+<div id="back-top" class="back-top"><a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a></div>
+<!--/Back to top-->
+
+<!--Login-Form -->
+<div class="modal fade" id="loginform">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="text-align: right;direction: rtl">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h3 style="text-align: left" class="modal-title">ورود</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="login_wrap">
+                        <div class="col-md-6 col-sm-6">
+                            <form action="#" method="get">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="نام کاربری یا ایمیل*">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="پسورد*">
+                                </div>
+                                <div class="form-group checkbox">
+                                    <input type="checkbox" id="remember">
+                                    <label for="remember">مرا به خاطر بسپار</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="ورود" class="btn btn-block">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <h6 class="gray_text">سریع وارد شوید</h6>
+                            <a href="#" class="btn btn-block facebook-btn"><i class="fa fa-facebook-square"
+                                                                              aria-hidden="true"></i> ورود با فیس
+                                بوک</a> <a href="#" class="btn btn-block twitter-btn"><i
+                                class="fa fa-twitter-square" aria-hidden="true"></i> ورود با توییتر</a> <a href="#"
+                                                                                                           class="btn btn-block googleplus-btn"><i
+                                class="fa fa-google-plus-square" aria-hidden="true"></i> ورود با گوگل</a></div>
+                        <div class="mid_divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer text-center">
+                <p>نام کاربری ندارید؟ <a href="#signupform" data-toggle="modal" data-dismiss="modal">اینجا ثبت نام
+                    کنید</a>
+                </p>
+                <p><a href="#forgotpassword" data-toggle="modal" data-dismiss="modal">رمزتان را فراموش کرده اید؟</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/Login-Form -->
+
+<!--Register-Form -->
+<div class="modal fade" id="signupform">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title">Sign Up</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="signup_wrap">
+                        <div class="col-md-6 col-sm-6">
+                            <form action="#" method="get">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder=" نام و نام خوانوادگی">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="ایمیل">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="پسورد">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="تکرار پسورد ">
+                                </div>
+                                <div class="form-group checkbox">
+                                    <input type="checkbox" id="terms_agree">
+                                    <label for="terms_agree">من شرایط و ظوابط <a href="#"> را میپذیرم</a></label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="ثبت نام" class="btn btn-block">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <h6 class="gray_text">سریعتر وارد شوید</h6>
+                            <a href="#" class="btn btn-block facebook-btn"><i class="fa fa-facebook-square"
+                                                                              aria-hidden="true"></i> ورود با فیس
+                                بوک</a> <a href="#" class="btn btn-block twitter-btn"><i
+                                class="fa fa-twitter-square" aria-hidden="true"></i>ورود با توییتر</a> <a href="#"
+                                                                                                          class="btn btn-block googleplus-btn"><i
+                                class="fa fa-google-plus-square" aria-hidden="true"></i> ورود با گوگل پلاس</a></div>
+                        <div class="mid_divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer text-center">
+                <p>حساب کاربری دارید؟ <a href="#loginform" data-toggle="modal" data-dismiss="modal">ورود</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/Register-Form -->
+
+<!--Forgot-password-Form -->
+<div class="modal fade" id="forgotpassword">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title">بازیابی پسورد</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="forgotpassword_wrap">
+                        <div class="col-md-12">
+                            <form action="#" method="get">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="آدرس ایمیل *">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Reset My Password" class="btn btn-block">
+                                </div>
+                            </form>
+                            <div class="text-center">
+                                <p class="grey_text"> به دلایل امنیتی رمز ورود شما را ذخیره نمی کنیم. رمزتون
+                                    بازنشانی می شود و مورد جدیدی ارسال می شود. </p>
+                                <p><a href="#loginform" data-toggle="modal" data-dismiss="modal"><i
+                                        class="fa fa-angle-double-left" aria-hidden="true"></i> بازگشت به صفحه ورود</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/Forgot-password-Form -->
+
 <!-- /Footer-->

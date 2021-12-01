@@ -1,0 +1,616 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+{% block content %}
+    <!--Page Header-->
+    <section class="page-header listing_page">
+        <div class="container">
+            <div class="page-header_wrap">
+                <div class="page-heading">
+                    <h1>لیست خودروها</h1>
+                </div>
+                <ul class="coustom-breadcrumb">
+                    <li><a href="#">خانه</a></li>
+                    <li>لیست خودرو</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Dark Overlay-->
+        <div class="dark-overlay"></div>
+    </section>
+    <!-- /Page Header-->
+
+    <!--Listing-grid-view-->
+    <section class="listing-page" style="direction: rtl;text-align: right">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-md-push-3" style="left: 0 !important;">
+                    <div class="mobile_search">
+                        <div class="sidebar_widget">
+                            <div class="widget_heading">
+                                <h5><i class="fa fa-filter" aria-hidden="true"></i> اتومبیل رویایی خود را پیدا کنید
+                                </h5>
+                            </div>
+                            <div class="sidebar_filter">
+                                <form action="#" method="get">
+                                    <div class="form-group select">
+                                        <select class="form-control">
+                                            <option> مکان را انتخاب کنید</option>
+                                            <option> مکان 1</option>
+                                            <option> مکان 2</option>
+                                            <option> مکان 3</option>
+                                            <option> مکان 4</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group select">
+                                        <select class="form-control">
+                                            <option> مارک را انتخاب کنید</option>
+                                            <option> مارک 1</option>
+                                            <option> مارک 2</option>
+                                            <option> مارک 3</option>
+                                            <option> مارک 4</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group select">
+                                        <select class="form-control">
+                                            <option> مدل را انتخاب کنید</option>
+                                            <option> سری 1</option>
+                                            <option> سری 2</option>
+                                            <option> سری 3</option>
+                                            <option> سری 4</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group select">
+                                        <select class="form-control">
+                                            <option> سال مدل</option>
+                                            <option> 1399</option>
+                                            <option> 1395</option>
+                                            <option> 1392</option>
+                                            <option> 1391</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">محدوده قیمت (تومان) </label>
+                                        <input id="price_range1" type="text" class="span2" value="" data-slider-min="50"
+                                               data-slider-max="6000" data-slider-step="5"
+                                               data-slider-value="[1000,5000]"/>
+                                    </div>
+                                    <div class="form-group select">
+                                        <select class="form-control">
+                                            <option> نوع اتومبیل</option>
+                                            <option> اتومبیل جدید</option>
+                                            <option> ماشین دست دوم</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block"><i class="fa fa-search"
+                                                                                       aria-hidden="true"></i> جستجوی
+                                            خودرو
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-sorting-wrapper">
+                        <div class="sorting-count">
+                            <p><span> 50 مورد نتایج جستجو</span></p>
+                        </div>
+                        <div class="result-sorting-by">
+                            <p>مرتب سازی بر اساس :</p>
+                            <form action="#" method="post">
+                                <div class="form-group select sorting-select">
+                                    <select class="form-control ">
+                                        <option> قیمت (پایین تا زیاد)</option>
+                                        <option> قیمت (بالا به پایین)</option>
+                                        <option> جدیدترین موارد</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-1.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">جدید</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare10">
+                                            <label for="compare10">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-2.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">کارکرده</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare11">
+                                            <label for="compare11">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-3.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">جدید</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare12">
+                                            <label for="compare12">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-2.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">جدید</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare13">
+                                            <label for="compare13">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-3.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">جدید</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare14">
+                                            <label for="compare14">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-1.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">کارکرده</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare15">
+                                            <label for="compare15">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-3.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">کارکرده</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare16">
+                                            <label for="compare16">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-2.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">جدید</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare17">
+                                            <label for="compare17">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-1.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">کارکرده</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare18">
+                                            <label for="compare18">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/600x380.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">کارکرده</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare19">
+                                            <label for="compare19">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-1.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">جدید</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare20">
+                                            <label for="compare20">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 grid_listing">
+                            <div class="product-listing-m gray-bg">
+                                <div class="product-listing-img"><a href="#"><img
+                                        src="{% static "assets/images/featured-img-3.jpg" %}"
+                                        class="img-responsive" alt="image"/>
+                                </a>
+                                    <div class="label_icon">کارکرده</div>
+                                    <div class="compare_item">
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="" id="compare21">
+                                            <label for="compare21">مقایسه</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-listing-content">
+                                    <h5><a href="#">نام خودرو</a></h5>
+                                    <p class="list-price">89 میلیون تومان</p>
+                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    </div>
+                                    <ul class="features_list">
+                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
+                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination">
+                        <ul>
+                            <li class="current">1</li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Side-Bar-->
+                <aside class="col-md-3 col-md-pull-9" style="right: 0 !important;">
+                    <div class="sidebar_widget sidebar_search_wrap">
+                        <div class="widget_heading">
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> اتومبیل رویایی خود را پیدا کنید </h5>
+                        </div>
+                        <div class="sidebar_filter">
+                            <form action="#" method="get">
+                                <div class="form-group select">
+                                    <select class="form-control">
+                                        <option> مکان را انتخاب کنید</option>
+                                        <option> مکان 1</option>
+                                        <option> مکان 2</option>
+                                        <option> مکان 3</option>
+                                        <option> مکان 4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group select">
+                                    <select class="form-control">
+                                        <option> مارک را انتخاب کنید</option>
+                                        <option> مارک 1</option>
+                                        <option> مارک 2</option>
+                                        <option> مارک 3</option>
+                                        <option> مارک 4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group select">
+                                    <select class="form-control">
+                                        <option> مدل را انتخاب کنید</option>
+                                        <option> سری 1</option>
+                                        <option> سری 2</option>
+                                        <option> سری 3</option>
+                                        <option> سری 4</option>
+                                    </select>
+                                </div>
+                                <div class="form-group select">
+                                    <select class="form-control">
+                                        <option> سال مدل</option>
+                                        <option> 1398</option>
+                                        <option> 1397</option>
+                                        <option> 1396</option>
+                                        <option> 1395</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">محدوده قیمت ($) </label>
+                                    <input id="price_range" type="text" class="span2" value="" data-slider-min="50"
+                                           data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]"/>
+                                </div>
+                                <div class="form-group select">
+                                    <select class="form-control">
+                                        <option> نوع اتومبیل</option>
+                                        <option> اتومبیل جدید</option>
+                                        <option> ماشین دست دوم</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block"><i class="fa fa-search"
+                                                                                   aria-hidden="true"></i> جستجوی
+                                        اتومبیل
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar_widget sell_car_quote">
+                        <div class="white-text div_zindex text-center">
+                            <h3> اتومبیل خود را بفروشید </h3>
+                            <p> درخواست قیمت کنید و اکنون اتومبیل خود را بفروشید! </p>
+                            <a href="#" class="btn">درخواست نقل قول <span class="angle_arrow"><i
+                                    class="fa fa-angle-left" aria-hidden="true"></i></span></a></div>
+                        <div class="dark-overlay"></div>
+                    </div>
+                    <div class="sidebar_widget">
+                        <div class="widget_heading">
+                            <h5><i class="fa fa-car" aria-hidden="true"></i> ماشین هایی که اخیراً لیست شده اند</h5>
+                        </div>
+                        <div class="recent_addedcars">
+                            <ul>
+                                <li class="gray-bg">
+                                    <div class="recent_post_img"><a href="#"><img
+                                            src="{% static "assets/images/featured-img-1.jpg" %}"
+                                            alt="image"></a></div>
+                                    <div class="recent_post_title"><a href="#">نام خودرویی که اخیراً لیست شده است</a>
+                                        <p class="widget_price">98 هزار تومان</p>
+                                    </div>
+                                </li>
+                                <li class="gray-bg">
+                                    <div class="recent_post_img"><a href="#"><img
+                                            src="{% static "assets/images/featured-img-2.jpg" %}"
+                                            alt="image"></a></div>
+                                    <div class="recent_post_title"><a href="#">نام خودرویی که اخیراً لیست شده است</a>
+                                        <p class="widget_price">98 هزار تومان</p>
+                                    </div>
+                                </li>
+                                <li class="gray-bg">
+                                    <div class="recent_post_img"><a href="#"><img
+                                            src="{% static "assets/images/featured-img-3.jpg" %}"
+                                            alt="image"></a></div>
+                                    <div class="recent_post_title"><a href="#">نام خودرویی که اخیراً لیست شده است </a>
+                                        <p class="widget_price">98 هزار تومان</p>
+                                    </div>
+                                </li>
+                                <li class="gray-bg">
+                                    <div class="recent_post_img"><a href="#"><img
+                                            src="{% static "assets/images/featured-img-1.jpg" %}"
+                                            alt="image"></a></div>
+                                    <div class="recent_post_title"><a href="#">نام خودرویی که اخیراً لیست شده است</a>
+                                        <p class="widget_price">98 هزار تومان</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+                <!--/Side-Bar-->
+            </div>
+        </div>
+    </section>
+    <!--/Listing-grid-view-->
+
+    <!--Brands-->
+    <section class="brand-section gray-bg">
+        <div class="container">
+            <div class="brand-hadding">
+                <h5>برندهای محبوب</h5>
+            </div>
+            <div class="brand-logo-list">
+                <div id="popular_brands">
+                    <div><a href="#"><img src="{% static "assets/images/brand-logo-1.png" %}" class="img-responsive"
+                                          alt="image"></a>
+                    </div>
+                    <div><a href="#"><img src="{% static "assets/images/brand-logo-2.png" %}" class="img-responsive"
+                                          alt="image"></a>
+                    </div>
+                    <div><a href="#"><img src="{% static "assets/images/brand-logo-3.png" %}" class="img-responsive"
+                                          alt="image"></a>
+                    </div>
+                    <div><a href="#"><img src="{% static "assets/images/brand-logo-4.png" %}" class="img-responsive"
+                                          alt="image"></a>
+                    </div>
+                    <div><a href="#"><img src="{% static "assets/images/brand-logo-1.png" %}" class="img-responsive"
+                                          alt="image"></a>
+                    </div>
+                    <div><a href="#"><img src="{% static "assets/images/brand-logo-2.png" %}" class="img-responsive"
+                                          alt="image"></a>
+                    </div>
+                    <div><a href="#"><img src="{% static "assets/images/brand-logo-3.png" %}" class="img-responsive"
+                                          alt="image"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Brands-->
+{% endblock %}
