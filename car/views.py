@@ -16,7 +16,7 @@ class CarRegistration(View):
             'car_price': car_price
 
         }
-        return render(request, "", context)
+        return render(request, 'car/create_Ad.html', context)
 
 
 class AdList(ListView):

@@ -32,7 +32,12 @@ class CarPrice(models.Model):
         (3, 'every 3 month '),
         (4, 'every 4 month '),
     ]
-    type = models.CharField(max_length=50, )
+    TYPE_CHOICES = [
+        ("F", "Fixed"),  # مقطوع
+        ("A", "Agreement"),  # توافقی
+        ("I", "Installments"),  # اقساطی
+    ]
+    type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     price = models.PositiveBigIntegerField()
     prepayment = models.PositiveBigIntegerField()
     Amount_per_payment = models.PositiveBigIntegerField()
@@ -41,7 +46,12 @@ class CarPrice(models.Model):
     delivery_time = models.IntegerField(choices=DELIVERY_CHOICES)
     payment_period = models.IntegerField(choices=PAYMENT_PERIOD_CHOICES)
 
-    # def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
+        if self.type == 'F' and not self.price:
+            raise Exception("price is necessary for Fixed type")
+        if self.type == "A":
+            self.price = 0
+        super().save(*args, **kwargs)
 
 
 class Cars(models.Model):
