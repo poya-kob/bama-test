@@ -7,14 +7,23 @@ from account.models import Users
 class Brands(models.Model):
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
 
 class BrandModels(models.Model):
     name = models.CharField(max_length=50)
     brand = models.ForeignKey(Brands, on_delete=models.CASCADE, related_name="brand_models")
 
+    def __str__(self):
+        return self.name
+
 
 class Colors(models.Model):
     name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
 
 
 class CarPrice(models.Model):

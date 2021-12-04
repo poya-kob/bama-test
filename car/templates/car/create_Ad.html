@@ -28,10 +28,132 @@
                 </div>
                 <div class="col-md-6 col-sm-8">
                     <div class="profile_wrap">
-                        <h5 class="uppercase underline">ارسال یک وسیله نقلیه جدید</h5>
-                        <form action="#" method="get">
-                            {{ car_form.as_p }}
+                        <h5 class="uppercase underline">ثبت یک وسیله نقلیه جدید</h5>
+                        <form action="{% url 'create-ad' %}" method="post">
+                            {% csrf_token %}
+                            {% if brands %}
+                                <div class="select">
+                                    <select class="form-control white_bg" name="brand" id="brand">
+                                        <option disabled selected="true"> برند را انتخاب کنید</option>
+                                        {% for option in brands %}
+                                            <option value="{{ option.id }}">{{ option }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <select class="form-control white_bg" name="brand_model" id="brand_model">
+                                        <option disabled selected="true"> مدل را انتخاب کنید</option>
+                                        {% for brand in brands %}
+                                            {% for option in brand.brand_models.all %}
+                                                <option value="{{ option.id }}"
+                                                        data-brandId="{{ option.brand.id }}">{{ option }}</option>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            {% endif %}
+                            <br>
+                            <div>
+                                <label for="{{ car_form.year_of_create.id_for_label }}"> {{ car_form.year_of_create.label }}
+                                </label>
+                                {{ car_form.year_of_create }}
+                            </div>
+                            <div id="fuel">
+                                <label for="{{ car_form.fuel_type.id_for_label }}"> {{ car_form.fuel_type.label }}
+                                </label>
+                                {{ car_form.fuel_type }}
+                            </div>
+                            <br>
+
+                            <div id="health">
+                                <label for="{{ car_form.used_type.id_for_label }}"> {{ car_form.used_type.label }}
+                                </label>
+                                {{ car_form.used_type }}<br>
+                                <label for="{{ car_form.kilometer_of_move.id_for_label }}"> {{ car_form.kilometer_of_move.label }}
+                                </label>
+                                {{ car_form.kilometer_of_move }}<br>
+                                <label for="{{ car_form.body_health_type.id_for_label }}"> {{ car_form.body_health_type.label }}
+                                </label>
+                                {{ car_form.body_health_type }}<br>
+
+
+                            </div>
+                            <br><br>
+                            <div id="descriptions">
+                                <label for="{{ car_form.descriptions.id_for_label }}"> {{ car_form.descriptions.label }}
+                                </label>
+                                {{ car_form.descriptions }}
+                                <label for="{{ car_form.is_free_zone.id_for_label }}"> {{ car_form.is_free_zone.label }}
+                                </label>
+                                {{ car_form.is_free_zone }}<br>
+
+                                <select class="form-control white_bg" name="brand" id="body_color">
+                                    <option disabled selected="true"> رنگ بدنه را انتخاب کنید</option>
+                                    {% for color in colors %}
+                                        <option value="{{ color.id }}">{{ color }}</option>
+                                    {% endfor %}
+                                </select>
+                                <br>
+
+
+                                <select class="form-control white_bg" name="brand" id="inside_color">
+                                    <option disabled selected="true"> رنگ داخلی را انتخاب کنید</option>
+                                    {% for color in colors %}
+                                        <option value="{{ color.id }}">{{ color }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+                            <br> <br>
                             <hr>
+                            <h4>نوع پرداخت</h4><br>
+                            <div id="price">
+                                <label for="{{ car_price.type.id_for_label }}"> {{ car_price.type.label }}
+                                </label>
+                                {{ car_price.type }}
+
+                                <div id="fixed">
+                                    <label  for="{{ car_price.price.id_for_label }}"> {{ car_price.price.label }}
+                                    </label>
+                                    {{ car_price.price }}<br>
+                                </div>
+                                <div id="agreement" style="display: none;">
+                                    <br><br>
+                                    <label class="form-control gray-bg" disabled>توافقی</label>
+                                </div>
+                                <div id="installments" style="display: none;">
+                                    <label for="{{ car_price.prepayment.id_for_label }}"> {{ car_price.prepayment.label }}
+                                    </label>
+                                    {{ car_price.prepayment }}<br>
+
+                                    <label for="{{ car_price.Amount_per_payment.id_for_label }}"> {{ car_price.Amount_per_payment.label }}
+                                    </label>
+                                    {{ car_price.Amount_per_payment }}<br>
+
+                                    <label for="{{ car_price.second_prepayment.id_for_label }}"> {{ car_price.second_prepayment.label }}
+                                    </label>
+                                    {{ car_price.second_prepayment }}<br>
+
+                                    <label for="{{ car_price.number_of_payments.id_for_label }}"> {{ car_price.number_of_payments.label }}
+                                    </label>
+                                    {{ car_price.number_of_payments }}<br>
+
+                                    <label for="{{ car_price.delivery_time.id_for_label }}"> {{ car_price.delivery_time.label }}
+                                    </label>
+                                    {{ car_price.delivery_time }}<br>
+
+                                    <label for="{{ car_price.payment_period.id_for_label }}"> {{ car_price.payment_period.label }}
+                                    </label>
+                                    {{ car_price.payment_period }}<br>
+
+
+                                </div>
+                            </div>
+                            <hr>
+                            {#                            {{ car_price.as_p }}#}
+                            <button type="submit" class="btn"> ثبت
+                                <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                            </button>
                         </form>
                     </div>
                 </div>
