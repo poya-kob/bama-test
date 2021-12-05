@@ -83,7 +83,7 @@ class Cars(models.Model):
         ('U', 'Useless'),
     ]
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
-    brand_model = models.ForeignKey(Brands, on_delete=models.SET_NULL, null=True)
+    brand_model = models.ForeignKey(BrandModels, on_delete=models.SET_NULL, null=True)
     year_of_create = models.IntegerField(choices=create_year_choices(1980))
     fuel_type = models.CharField(max_length=50, choices=FUEL_CHOICES)
     used_type = models.CharField(max_length=50, choices=USED_TYPE_CHOICES)

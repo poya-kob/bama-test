@@ -51,12 +51,13 @@ $(document).ready(function () {
     $inside_color.on('change', function () {
         if (parseInt($(this).val()) > 0) {
             $("#price").show();
+            $("#btn").show();
         }
     }).trigger('change');
 
     var $price_type = $("#id_type");
-    var $price_type_option = $price_type.find("option");
     $price_type.on('change', function () {
+        $("#btn").show();
         if ($(this).val() === 'I') {
             $("#agreement").hide();
             $("#fixed").hide();

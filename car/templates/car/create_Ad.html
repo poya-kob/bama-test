@@ -83,9 +83,14 @@
                                 <label for="{{ car_form.descriptions.id_for_label }}"> {{ car_form.descriptions.label }}
                                 </label>
                                 {{ car_form.descriptions }}
-                                <label for="{{ car_form.is_free_zone.id_for_label }}"> {{ car_form.is_free_zone.label }}
-                                </label>
-                                {{ car_form.is_free_zone }}<br>
+                                <div>
+                                    <br>
+                                    <label for="{{ car_form.is_free_zone.id_for_label }}"> {{ car_form.is_free_zone.label }}
+                                    </label>
+
+
+                                    {{ car_form.is_free_zone }}<br> <br>
+                                </div>
 
                                 <select class="form-control white_bg" name="brand" id="body_color">
                                     <option disabled selected="true"> رنگ بدنه را انتخاب کنید</option>
@@ -105,15 +110,15 @@
 
                             </div>
                             <br> <br>
-                            <hr>
-                            <h4>نوع پرداخت</h4><br>
                             <div id="price">
+                                <hr>
+                                <h4>نوع پرداخت</h4><br>
                                 <label for="{{ car_price.type.id_for_label }}"> {{ car_price.type.label }}
                                 </label>
                                 {{ car_price.type }}
 
                                 <div id="fixed">
-                                    <label  for="{{ car_price.price.id_for_label }}"> {{ car_price.price.label }}
+                                    <label for="{{ car_price.price.id_for_label }}"> {{ car_price.price.label }}
                                     </label>
                                     {{ car_price.price }}<br>
                                 </div>
@@ -149,9 +154,21 @@
 
                                 </div>
                             </div>
+                            <div class="user_profile_info gray-bg padding_4x4_40">
+                                <div class="upload_user_logo"><img src="{% static "assets/images/dealer-logo.jpg" %}"
+                                                                   alt="image">
+                                    <div class="upload_newlogo">
+                                        {{ upload_image }}
+                                    </div>
+                                </div>
+                                <div class="dealer_info">
+                                    <h5> انتخاب تصاویر خودرو </h5>
+
+                                </div>
+                            </div>
                             <hr>
                             {#                            {{ car_price.as_p }}#}
-                            <button type="submit" class="btn"> ثبت
+                            <button type="submit" class="btn" style="display: none;" id="btn"> ثبت
                                 <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                             </button>
                         </form>

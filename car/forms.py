@@ -1,5 +1,6 @@
-from django.forms import ModelForm, Form
+from django.forms import ModelForm
 from django import forms
+
 from .models import Cars, CarPrice
 
 
@@ -12,9 +13,10 @@ class CarForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for visible in self.visible_fields():
-            # if visible.name not in ['year_of_create', ]:
-            #     visible.field.widget.attrs['style'] = "display: none;"
-            visible.field.widget.attrs['class'] = 'form-control white_bg'
+            if visible.name == 'is_free_zone':
+                visible.field.widget.attrs['class'] = 'class="form-group checkbox accessories_list"'
+            else:
+                visible.field.widget.attrs['class'] = 'form-control white_bg'
 
 
 class CarPriceForm(ModelForm):
@@ -29,3 +31,7 @@ class CarPriceForm(ModelForm):
             # visible.field.widget = forms.HiddenInput()
             visible.field.widget.attrs['class'] = 'form-control white_bg'
             # visible.field.widget.attrs['style'] = "display: none;"
+
+
+class CarGalleryForm(forms.Form):
+    image = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
