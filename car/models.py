@@ -1,7 +1,7 @@
 from django.db import models
 
 from .utils import create_year_choices, create_number_of_payments, upload_image_path
-from account.models import Users
+from account.models import Customer
 
 
 class Brands(models.Model):
@@ -47,19 +47,20 @@ class CarPrice(models.Model):
         ("I", "Installments"),  # اقساطی
     ]
     type = models.CharField(max_length=50, choices=TYPE_CHOICES)
-    price = models.PositiveBigIntegerField()
-    prepayment = models.PositiveBigIntegerField()
-    Amount_per_payment = models.PositiveBigIntegerField()
-    second_prepayment = models.PositiveBigIntegerField()
-    number_of_payments = models.CharField(max_length=50, choices=create_number_of_payments(10))
-    delivery_time = models.IntegerField(choices=DELIVERY_CHOICES)
-    payment_period = models.IntegerField(choices=PAYMENT_PERIOD_CHOICES)
+    price = models.PositiveBigIntegerField(null=True)
+    prepayment = models.PositiveBigIntegerField(null=True)
+    Amount_per_payment = models.PositiveBigIntegerField(null=True)
+    second_prepayment = models.PositiveBigIntegerField(null=True)
+    number_of_payments = models.CharField(max_length=50, choices=create_number_of_payments(10), null=True)
+    delivery_time = models.IntegerField(choices=DELIVERY_CHOICES, null=True)
+    payment_period = models.IntegerField(choices=PAYMENT_PERIOD_CHOICES, null=True)
 
     def save(self, *args, **kwargs):
         if self.type == 'F' and not self.price:
             raise Exception("price is necessary for Fixed type")
-        if self.type == "A":
+        elif self.type == "A":
             self.price = 0
+
         super().save(*args, **kwargs)
 
 
@@ -82,7 +83,7 @@ class Cars(models.Model):
         ('D', 'Damaged'),
         ('U', 'Useless'),
     ]
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    user = models.ForeignKey(Customer, on_delete=models.CASCADE)
     brand_model = models.ForeignKey(BrandModels, on_delete=models.SET_NULL, null=True)
     year_of_create = models.IntegerField(choices=create_year_choices(1980))
     fuel_type = models.CharField(max_length=50, choices=FUEL_CHOICES)
@@ -94,6 +95,9 @@ class Cars(models.Model):
     body_color_type = models.ForeignKey(Colors, on_delete=models.SET_NULL, null=True, related_name="car_body_color")
     inside_color_type = models.ForeignKey(Colors, on_delete=models.SET_NULL, null=True, related_name="car_inside_color")
     price = models.OneToOneField(CarPrice, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user} -- {self.brand_model.brand.name} - {self.brand_model}"
 
 
 class CarGallery(models.Model):

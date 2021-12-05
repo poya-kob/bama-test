@@ -6,9 +6,14 @@
 
                 <div class="col-sm-9 col-md-10">
                     <div class="header_info">
-
-                        <div class="login_btn"><a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
-                                                  data-dismiss="modal">ورود / ثبت نام</a></div>
+                        {% if not request.user.is_authenticated %}
+                            <div class="login_btn"><a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
+                                                      data-dismiss="modal">ورود / ثبت نام</a></div>
+                        {% else %}
+                            <div class="login_btn"><a href='{% url "logout_page" %}'
+                                                      class="btn btn-xs uppercase">خروج </a>
+                            </div>
+                        {% endif %}
                         <div class="social-follow">
                             <ul>
                                 <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
@@ -31,7 +36,8 @@
                     </div>
                 </div>
                 <div class="col-sm-3 col-md-2">
-                    <div class="logo"><a href="index.html"><img src={% static "assets/images/logo.png" %} alt="image"/></a></div>
+                    <div class="logo"><a href="index.html"><img src={% static "assets/images/logo.png" %} alt="image"/></a>
+                    </div>
                 </div>
             </div>
         </div>

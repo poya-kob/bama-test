@@ -29,7 +29,7 @@
                 <div class="col-md-6 col-sm-8">
                     <div class="profile_wrap">
                         <h5 class="uppercase underline">ثبت یک وسیله نقلیه جدید</h5>
-                        <form action="{% url 'create-ad' %}" method="post">
+                        <form action="{% url 'create-ad' %}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {% if brands %}
                                 <div class="select">
@@ -92,7 +92,7 @@
                                     {{ car_form.is_free_zone }}<br> <br>
                                 </div>
 
-                                <select class="form-control white_bg" name="brand" id="body_color">
+                                <select class="form-control white_bg" name="body_color" id="body_color">
                                     <option disabled selected="true"> رنگ بدنه را انتخاب کنید</option>
                                     {% for color in colors %}
                                         <option value="{{ color.id }}">{{ color }}</option>
@@ -101,7 +101,7 @@
                                 <br>
 
 
-                                <select class="form-control white_bg" name="brand" id="inside_color">
+                                <select class="form-control white_bg" name="inside_color" id="inside_color">
                                     <option disabled selected="true"> رنگ داخلی را انتخاب کنید</option>
                                     {% for color in colors %}
                                         <option value="{{ color.id }}">{{ color }}</option>

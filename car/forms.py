@@ -28,9 +28,7 @@ class CarPriceForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for visible in self.visible_fields():
-            # visible.field.widget = forms.HiddenInput()
             visible.field.widget.attrs['class'] = 'form-control white_bg'
-            # visible.field.widget.attrs['style'] = "display: none;"
 
 
 class CarGalleryForm(forms.Form):
