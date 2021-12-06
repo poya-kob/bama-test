@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from .models import Customer
 from car.models import Cars
+from .forms import UserRegisterForm
 
 
 class LoginUser(View):
@@ -19,9 +20,13 @@ class LoginUser(View):
 
 class RegisterUsers(View):
     def post(self, request):
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = Customer.objects.create_user(username=username, password=password, is_staff=True, is_active=False)
+        register_form = UserRegisterForm(request.POST)
+        if register_form.is_valid():
+            username = register_form.cleaned_data.get("username")
+            password = register_form.cleaned_data.get("password")
+            user = Customer.objects.create_user(username=username, password=password, is_staff=True, is_active=True)
+            login(request, user)
+        return redirect(reverse("home_page"))
 
 
 def logout_page(request):
