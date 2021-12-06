@@ -31,4 +31,16 @@ def upload_image_path(instance, filename):
     date = datetime.datetime.now()
     name, ext = get_file_name(filename)
     new_name = f"{name}{ext}"
-    return f"{type(instance).__name__ }/{date.year}/{date.month}/{date.day}/{new_name}"
+    return f"{type(instance).__name__}/{date.year}/{date.month}/{date.day}/{new_name}"
+
+
+def keys_seprator(request, car_price_fields: list):
+    price_dict = {}
+    car_dict = {}
+    for key in request.POST:
+        if request.POST.get(key):
+            if key in car_price_fields and request.POST.get(key):
+                price_dict[key] = request.POST.get(key or None)
+            elif key not in ['csrfmiddlewaretoken', 'image', 'brand']:
+                car_dict[key] = request.POST.get(key or None)
+    return price_dict, car_dict

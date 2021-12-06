@@ -94,7 +94,7 @@
                     </div>
                     <div class="result-sorting-wrapper">
                         <div class="sorting-count">
-                            <p><span> 50 مورد نتایج جستجو</span></p>
+                            <p><span> {{ cars.count }} مورد نتایج جستجو</span></p>
                         </div>
                         <div class="result-sorting-by">
                             <p>مرتب سازی بر اساس :</p>
@@ -110,53 +110,91 @@
                         </div>
                     </div>
                     <div class="row">
-                        #start
-                        <div class="col-md-4 grid_listing">
-                            <div class="product-listing-m gray-bg">
-                                <div class="product-listing-img"><a href="#"><img
-                                        src="{% static "assets/images/featured-img-1.jpg" %}"
-                                        class="img-responsive" alt="image"/>
-                                </a>
-                                    <div class="label_icon">جدید</div>
-                                    <div class="compare_item">
-                                        <div class="checkbox">
-                                            <input type="checkbox" value="" id="compare10">
-                                            <label for="compare10">مقایسه</label>
+                        {% for car in cars %}
+                            <div class="col-md-4 grid_listing">
+                                <div class="product-listing-m gray-bg">
+                                    <div class="product-listing-img">
+                                        <a href="{% url 'addetail' car.id %}">
+                                            {% if car.car_image.first %}
+
+                                                <img src="{{ car.car_image.first.image.url }}"
+                                                     class="img-responsive" alt="image"/>
+
+                                            {% else %}
+                                                <img src="{% static "assets/images/no-image.jpg" %}"
+                                                     class="img-responsive" alt="image"/>
+                                            {% endif %}
+                                        </a>
+                                        <div class="label_icon">جدید</div>
+                                        <div class="compare_item">
+                                            <div class="checkbox">
+                                                <input type="checkbox" value="" id="compare10">
+                                                <label for="compare10">مقایسه</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="product-listing-content">
-                                    <h5><a href="#">نام خودرو</a></h5>
-                                    <p class="list-price">89 میلیون تومان</p>
-                                    <div class="car-location"><span><i class="fa fa-map-marker" aria-hidden="true"></i> آذربایجان غربی خوی</span>
+                                    <div class="product-listing-content">
+                                        <h5><a href="{% url 'addetail' car.id %}">{{ car.car_name }}</a></h5>
+                                        {% if car.price.type == 'F' %}
+                                            <p class="list-price">{{ car.price.price }}</p>
+                                        {% elif car.price.type == 'A' %}
+                                            <p class="list-price">توافقی</p>
+
+                                        {% else %}
+                                            <p class="list-price">اقساطی</p>
+
+                                        {% endif %}
+                                        <div class="car-location"><span><i class="fa fa-map-marker"
+                                                                           aria-hidden="true"></i> {{ car.user }}</span>
+                                        </div>
+                                        <ul class="features_list">
+                                            <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
+                                            <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
+                                            <li><i class="fa fa-calendar"
+                                                   aria-hidden="true"></i>مدل {{ car.year_of_create }}</li>
+                                            {% if car.fuel_type == 'C' %}
+                                                <li><i class="fa fa-car" aria-hidden="true"></i>CNG</li>
+                                            {% elif car.fuel_type == 'P' %}
+                                                <li><i class="fa fa-car" aria-hidden="true"></i>بنزینی</li>
+
+                                            {% elif car.fuel_type == 'D' %}
+                                                <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
+                                            {% else %}
+                                                <li><i class="fa fa-car" aria-hidden="true"></i>Hybrid</li>
+                                            {% endif %}
+                                        </ul>
                                     </div>
-                                    <ul class="features_list">
-                                        <li><i class="fa fa-road" aria-hidden="true"></i>35 هزار کیلومتر</li>
-                                        <li><i class="fa fa-tachometer" aria-hidden="true"></i>35 هزارمایل</li>
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i>مدل 94</li>
-                                        <li><i class="fa fa-car" aria-hidden="true"></i>دیزلی</li>
-                                    </ul>
                                 </div>
                             </div>
-                        </div>
+                        {% endfor %}
 
                     </div>
                     <div class="pagination">
-                        <ul>
-                            <li class="current">1</li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
+                        {% if is_paginated %}
+                            <ul>
+                                {% if page_obj.has_previous %}
+                                    <li class="current"><a href="?page={{ page_obj.previous_page_number }}"><</a></li>
+                                {% endif %}
+                                {% for page in paginator.page_range %}
+                                    {% if page == page_obj.number %}
+                                        <li class="current"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    {% else %}
+                                        <li><a href="?page={{ page }}">{{ page }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li class="current"><a href="?page={{ page_obj.next_page_number }}"> > </a></li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
                     </div>
                 </div>
-
                 <!--Side-Bar-->
                 <aside class="col-md-3 col-md-pull-9" style="right: 0 !important;">
                     <div class="sidebar_widget sidebar_search_wrap">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-filter" aria-hidden="true"></i> اتومبیل رویایی خود را پیدا کنید </h5>
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> اتومبیل رویایی خود را پیدا کنید
+                            </h5>
                         </div>
                         <div class="sidebar_filter">
                             <form action="#" method="get">
@@ -199,7 +237,8 @@
                                 <div class="form-group">
                                     <label class="form-label">محدوده قیمت ($) </label>
                                     <input id="price_range" type="text" class="span2" value="" data-slider-min="50"
-                                           data-slider-max="6000" data-slider-step="5" data-slider-value="[1000,5000]"/>
+                                           data-slider-max="6000" data-slider-step="5"
+                                           data-slider-value="[1000,5000]"/>
                                 </div>
                                 <div class="form-group select">
                                     <select class="form-control">
@@ -215,55 +254,6 @@
                                     </button>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                    <div class="sidebar_widget sell_car_quote">
-                        <div class="white-text div_zindex text-center">
-                            <h3> اتومبیل خود را بفروشید </h3>
-                            <p> درخواست قیمت کنید و اکنون اتومبیل خود را بفروشید! </p>
-                            <a href="#" class="btn">درخواست نقل قول <span class="angle_arrow"><i
-                                    class="fa fa-angle-left" aria-hidden="true"></i></span></a></div>
-                        <div class="dark-overlay"></div>
-                    </div>
-                    <div class="sidebar_widget">
-                        <div class="widget_heading">
-                            <h5><i class="fa fa-car" aria-hidden="true"></i> ماشین هایی که اخیراً لیست شده اند</h5>
-                        </div>
-                        <div class="recent_addedcars">
-                            <ul>
-                                <li class="gray-bg">
-                                    <div class="recent_post_img"><a href="#"><img
-                                            src="{% static "assets/images/featured-img-1.jpg" %}"
-                                            alt="image"></a></div>
-                                    <div class="recent_post_title"><a href="#">نام خودرویی که اخیراً لیست شده است</a>
-                                        <p class="widget_price">98 هزار تومان</p>
-                                    </div>
-                                </li>
-                                <li class="gray-bg">
-                                    <div class="recent_post_img"><a href="#"><img
-                                            src="{% static "assets/images/featured-img-2.jpg" %}"
-                                            alt="image"></a></div>
-                                    <div class="recent_post_title"><a href="#">نام خودرویی که اخیراً لیست شده است</a>
-                                        <p class="widget_price">98 هزار تومان</p>
-                                    </div>
-                                </li>
-                                <li class="gray-bg">
-                                    <div class="recent_post_img"><a href="#"><img
-                                            src="{% static "assets/images/featured-img-3.jpg" %}"
-                                            alt="image"></a></div>
-                                    <div class="recent_post_title"><a href="#">نام خودرویی که اخیراً لیست شده است </a>
-                                        <p class="widget_price">98 هزار تومان</p>
-                                    </div>
-                                </li>
-                                <li class="gray-bg">
-                                    <div class="recent_post_img"><a href="#"><img
-                                            src="{% static "assets/images/featured-img-1.jpg" %}"
-                                            alt="image"></a></div>
-                                    <div class="recent_post_title"><a href="#">نام خودرویی که اخیراً لیست شده است</a>
-                                        <p class="widget_price">98 هزار تومان</p>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </aside>
@@ -306,5 +296,5 @@
             </div>
         </div>
     </section>
-    <!-- /Brands-->
+    <!--/Brands-->
 {% endblock %}

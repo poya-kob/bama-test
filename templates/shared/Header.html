@@ -96,31 +96,34 @@
                     </li>
                 </ul>
             </div>
-            <div class="header_wrap">
-                <div class="user_login">
-                    <ul>
-                        <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"><i class="fa fa-user-circle"
-                                                                         aria-hidden="true"></i> میلادموسوی <i
-                                class="fa fa-angle-down" aria-hidden="true"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="profile-settings.html"> تنظیمات نمایه </a></li>
-                                <li><a href="my-vehicles.html "> وسایل نقلیه من </a></li>
-                                <li><a href="post-vehicle.html"> ارسال وسیله نقلیه </a></li>
-                                <li><a href="#"> خروج از سیستم </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="header_search">
+            {% if request.user_obj %}
+                <div class="header_wrap">
+                    <div class="user_login">
+                        <ul>
+                            <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false"><i class="fa fa-user-circle"
+                                                                             aria-hidden="true"></i> {{ request.user_obj.username }}
+                                <i
+                                        class="fa fa-angle-down" aria-hidden="true"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile-settings.html"> تنظیمات نمایه </a></li>
+                                    <li><a href="{% url 'my-cars' %}"> وسایل نقلیه من </a></li>
+                                    <li><a href="{% url 'create-ad' %}"> ثبت خودرو </a></li>
+                                    <li><a href="{% url 'logout_page' %}"> خروج از سیستم </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_search">
 
-                    <form action="#" method="get" id="header-search-form">
-                        <input type="text" placeholder="...جستجو" class="form-control">
-                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
-                    <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                        <form action="#" method="get" id="header-search-form">
+                            <input type="text" placeholder="...جستجو" class="form-control">
+                            <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                        <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </nav>
     <!-- Navigation end -->

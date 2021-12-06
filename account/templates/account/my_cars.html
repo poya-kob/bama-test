@@ -1,0 +1,66 @@
+{% extends "shared/_MainLayout.html" %}
+{% load static %}
+{% block  content %}
+    <!--my-vehicles-->
+    <section class="user_profile inner_pages" style="direction: rtl;text-align: right">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-3">
+                    <div class="profile_nav">
+                        <ul>
+                            <li class="active"><a href="{% url 'my-cars' %}"> وسایل نقلیه من </a></li>
+                            <li><a href="{% url 'create-ad' %}"> ارسال وسایل نقلیه </a></li>
+                            <li><a href="#"> از سیستم خارج شوید </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-8">
+                    <div class="profile_wrap">
+                        <h5 class="uppercase underline">وسایل نقلیه من <span>({{ cars.count }} خودرو)</span></h5>
+                        <div class="my_vehicles_list">
+                            <ul class="vehicle_listing">
+                                {% for car in cars %}
+                                    <li>
+                                        <div class="vehicle_img"><a href="{% url 'addetail' car.id %}">
+                                            {% if car.car_image.first %}
+                                                <img src="{{ car.car_image.first.image.url }}"
+                                                     alt="image">
+                                            {% else %}
+                                                <img src="{% static "assets/images/no-image.jpg" %}"
+                                                     class="img-responsive" alt="image"/>
+                                            {% endif %}
+                                        </a>
+                                        </div>
+                                        <div class="vehicle_title">
+                                            <h6><a href="{% url 'addetail' car.id %}">{{ car.car_name }}</a></h6>
+                                        </div>
+                                        <div class="vehicle_status"><a href="#"
+                                                                       class="btn outline btn-xs active-btn">فعال</a>
+                                            <div class="clearfix"></div>
+                                            <form action="{% url 'my-cars' %}" method="post" id="{{ car.id }}">
+                                                {% csrf_token %}
+                                                <button type="submit" value="{{ car.id }}" name="car_id"
+                                                        class="fa fa-trash" aria-hidden="true"></button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            {#                            <div class="pagination">#}
+                            {#                                <ul>#}
+                            {#                                    <li class="current">1</li>#}
+                            {#                                    <li><a href="#">2</a></li>#}
+                            {#                                    <li><a href="#">3</a></li>#}
+                            {#                                    <li><a href="#">4</a></li>#}
+                            {#                                    <li><a href="#">5</a></li>#}
+                            {#                                </ul>#}
+                            {#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/my-vehicles-->
+
+{% endblock %}
