@@ -1,7 +1,7 @@
 from django.db import models
 
-from car.model.cars import Cars
-from car.utils import upload_image_path
+from .model_utils import upload_image_path
+from .cars import Cars
 
 
 class CarGallery(models.Model):

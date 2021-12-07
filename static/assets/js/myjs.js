@@ -1,8 +1,15 @@
+// $(document).load(function () {
+//     $(".form-control").each(function (index) {
+//         if (index > 2) {
+//             $(this).hide()
+//         }
+//     });
+// });
 $(document).ready(function () {
     var $brand = $("#brand");
     var $brand_model = $("#brand_model");
     var $brand_model_options = $brand_model.find("option");
-    $brand.on('change', function () {
+    $brand.on('click', function () {
             var brand_id = parseInt($(this).val());
             if (brand_id > 0) {
                 $brand_model_options.each(function (el) {
@@ -23,7 +30,7 @@ $(document).ready(function () {
     var $created_year = $("#id_year_of_create")
     $("#fuel").hide();
 
-    $created_year.on('change', function () {
+    $created_year.on('click', function () {
         if (parseInt($(this).val()) > 0) {
             $("#fuel").show();
         }
@@ -32,7 +39,7 @@ $(document).ready(function () {
 
     $("#health").hide();
     var $fuel_type = $("#id_fuel_type");
-    $fuel_type.on('change', function () {
+    $fuel_type.on('click', function () {
         if ($(this).val() !== "") {
             $("#health").show();
         }
@@ -40,7 +47,7 @@ $(document).ready(function () {
 
     $("#descriptions").hide();
     var $body_health = $("#id_body_health_type");
-    $body_health.on('change', function () {
+    $body_health.on('click', function () {
         if ($(this).val() !== "") {
             $("#descriptions").show();
         }
@@ -48,7 +55,7 @@ $(document).ready(function () {
 
     $("#price").hide();
     var $inside_color = $("#inside_color");
-    $inside_color.on('change', function () {
+    $inside_color.on('click', function () {
         if (parseInt($(this).val()) > 0) {
             $("#price").show();
             $("#btn").show();
@@ -56,7 +63,7 @@ $(document).ready(function () {
     }).trigger('change');
 
     var $price_type = $("#id_type");
-    $price_type.on('change', function () {
+    $price_type.on('click', function () {
         $("#btn").show();
         if ($(this).val() === 'I') {
             $("#agreement").hide();

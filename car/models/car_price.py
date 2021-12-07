@@ -1,6 +1,6 @@
 from django.db import models
 
-from car.utils import create_number_of_payments
+from .model_utils import create_number_of_payments
 
 
 class CarPrice(models.Model):

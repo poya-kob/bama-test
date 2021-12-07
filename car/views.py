@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.views.generic import ListView, DetailView
 
 from .forms import CarForm, CarPriceForm, CarGalleryForm
-from .models import Cars, Brands, Colors, CarPrice, CarGallery
-from .utils import keys_seprator
+from .models import Cars, Brands, Colors, CarPrice
+from .utils import keys_seprator, create_car_gallery
 
 
 class CarRegistration(View):
@@ -29,11 +29,9 @@ class CarRegistration(View):
                                       brand_model_id=car_dict.pop('brand_model'),
                                       body_color_type_id=car_dict.pop('body_color'),
                                       inside_color_type_id=car_dict.pop('inside_color'), **car_dict)
-        image = CarGalleryForm(self.request.POST.get('image'), self.request.FILES)
-        images = self.request.FILES.getlist('image')
-        if image.is_valid():
-            for image in images:
-                CarGallery.objects.create(car_id=car_ins.id, image=image)
+        done = create_car_gallery(self.request.POST.get('image'), self.request.FILES, car_ins)
+        if done:
+            return redirect(reverse('adlist'))
         return render(request, 'car/create_Ad.html', self.context)
 
 
@@ -48,3 +46,9 @@ class AdDetail(DetailView):
     template_name = "car/Ad_detail.html"
     queryset = Cars.objects.all()
     context_object_name = 'car'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        car = context['car']
+        context['related_ads'] = Cars.objects.filter(brand_model__brand=car.brand_model.brand).order_by('?')[:4]
+        return context

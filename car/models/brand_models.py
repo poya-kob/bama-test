@@ -1,6 +1,6 @@
 from django.db import models
 
-from car.model.brands import Brands
+from .brands import Brands
 
 
 class BrandModels(models.Model):

@@ -56,43 +56,10 @@
             <div style="float: right" class="collapse navbar-collapse" id="navigation">
                 <ul class="nav navbar-nav">
 
-                    <li><a href="about-us.html">درباره ما</a></li>
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">فهرست</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="listing-grid.html">استایل اول</a></li>
-                            <li><a href="listing-classic.html">استایل کلاسیک</a></li>
-                            <li><a href="listing-detail.html">صفحه جزییات اول</a></li>
-                            <li><a href="listing-detail-2.html">صفحه جزییات دوم</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">نمایندگی
-                        ها</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="dealers-list.html"> نمای لیست </a></li>
-                            <li><a href="dealers-profile.html"> صفحه جزئیات </a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">صفحات</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html"> خدمات </a></li>
-                            <li><a href="contact-us.html"> با ما تماس بگیرید </a></li>
-                            <li><a href="compare.html"> مقایسه وسایل نقلیه </a></li>
-                            <li><a href="faq.html"> سوالات متداول </a></li>
-                            <li><a href="404.html"> خطای 404 </a></li>
-                            <li><a href="coming-soon.html"> به زودی </a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">اخبار</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog-right-sidebar.html"> وبلاگ راست چین </a></li>
-                            <li><a href="blog-detail.html"> جزئیات وبلاگ </a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">خانه</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.html"> صفحه اصلی 1 </a></li>
+                    <li><a href="{% url 'adlist' %}">آگهی ها</a></li>
+                    <li><a href="{% url 'home_page' %}" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">خانه</a>
 
-                        </ul>
                     </li>
                 </ul>
             </div>
@@ -106,7 +73,6 @@
                                 <i
                                         class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="profile-settings.html"> تنظیمات نمایه </a></li>
                                     <li><a href="{% url 'my-cars' %}"> وسایل نقلیه من </a></li>
                                     <li><a href="{% url 'create-ad' %}"> ثبت خودرو </a></li>
                                     <li><a href="{% url 'logout_page' %}"> خروج از سیستم </a></li>

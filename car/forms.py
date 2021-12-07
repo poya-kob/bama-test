@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 
-from .models import Cars, CarPrice
+from .models import CarPrice, Cars
 
 
 class CarForm(ModelForm):
